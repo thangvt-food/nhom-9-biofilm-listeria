@@ -17,13 +17,15 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      PAGES_TOKEN: ${{ secrets.PAGES_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Ensure custom domain
-        continue-on-error: true
+        if: ${{ env.PAGES_TOKEN != '' }}
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ env.PAGES_TOKEN }}
         run: gh api -X PUT "repos/${{ github.repository }}/pages" -f cname=cnshtp.yangio.id.vn -f build_type=workflow
       - name: Setup Pages
         uses: actions/configure-pages@v5

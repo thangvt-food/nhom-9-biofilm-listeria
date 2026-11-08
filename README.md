@@ -18,6 +18,7 @@ Trang hỏi–đáp của Nhóm 9 (CNSHTP) về màng biofilm của *Listeria mo
 
 - GitHub Pages được triển khai tự động bằng GitHub Actions (`.github/workflows/pages.yml`) mỗi khi push lên nhánh `main`.
 - Tên miền tùy chỉnh: **https://cnshtp.yangio.id.vn** (khai báo trong `CNAME`).
+- Workflow tự đặt lại tên miền nếu có secret `PAGES_TOKEN` (PAT có quyền `repo`/`pages:write`); nếu không có secret, workflow vẫn deploy bình thường theo cấu hình Pages của repo.
 
 ### DNS cần thiết
 
