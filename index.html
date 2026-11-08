@@ -128,6 +128,10 @@
   .ask-q .q-num{margin-bottom:6px}
   .ask-q p.q{font-size:16.5px;line-height:1.7;margin:0;font-weight:600}
   .ask-q .q-note{margin:10px 0 0;font-size:14px;line-height:1.7;color:var(--warn-ink);background:var(--warn-bg);border:1px solid var(--warn-line);border-radius:var(--radius);padding:10px 14px}
+  .ask-q p.q-context,.ask-q p.q-issue{font-size:14.5px;line-height:1.75;color:var(--ink-2);margin:0 0 10px}
+  .ask-q p.q-context b,.ask-q p.q-issue b{color:var(--ink)}
+  .ask-q p.q-goal{margin:12px 0 0;font-size:14px;line-height:1.7;color:var(--ink-3);border-left:3px solid var(--accent);padding:2px 0 2px 12px}
+  .ask-q p.q-goal b{color:var(--ink-2)}
   .ask-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
   .ask-foot{font-size:13.5px;color:var(--ink-3);margin:16px 0 0;line-height:1.7}
   /* two-step views: home -> pick group -> detail */
@@ -211,7 +215,7 @@
         <span class="choice-tag">Phần II</span>
         <span class="choice-title">Xem câu hỏi của Nhóm 9</span>
         <span class="choice-desc">Nhóm 9 đặt câu hỏi cho các nhóm khác. Chọn nhóm để xem đúng các câu hỏi Nhóm 9 đã đặt cho nhóm đó.</span>
-        <span class="choice-meta">10 câu hỏi · 5 nhóm nhận câu hỏi</span>
+        <span class="choice-meta">16 câu hỏi · 8 nhóm nhận câu hỏi</span>
       </button>
     </div>
   </section>
@@ -445,7 +449,7 @@
     <div class="ask-head">
       <p class="kicker" style="margin-bottom:10px">Nhóm 9 đặt câu hỏi</p>
       <h2 id="askTitle">Câu hỏi Nhóm 9 đặt cho các nhóm khác</h2>
-      <p>Tổng cộng 10 câu, trích từ 5 ảnh viết tay ngày 03/11/2026.</p>
+      <p>Tổng cộng 16 câu — mỗi nhóm 2 câu — theo file câu hỏi phản biện ngày 08/11/2026.</p>
     </div>
     <div class="ask-body">
       <div class="ask-panel" id="askPanel" aria-live="polite" style="margin-top:0;border-top:none;padding-top:0">
@@ -455,7 +459,7 @@
         <div class="ask-actions">
           <button class="btn primary" type="button" id="askCopyAll">Sao chép tất cả câu hỏi</button>
         </div>
-        <p class="ask-foot">Chỗ đánh dấu [?] là chữ trong ảnh viết tay khó đọc hoặc bị cắt — giữ nguyên theo bản trích, Nhóm 9 chưa đoán thêm nội dung.</p>
+        <p class="ask-foot">Câu hỏi biên soạn theo file câu hỏi phản biện ngày 08/11/2026. Mỗi câu gồm bối cảnh, vấn đề chính, câu hỏi và mục tiêu cần trả lời.</p>
       </div>
     </div>
   </section>
@@ -467,7 +471,7 @@
 <footer>
   <div class="wrap">
     <p>NHÓM 9 — CÔNG NGHỆ SINH HỌC THỰC PHẨM<br>
-    Bài tổng quan: Cơ chế hình thành màng biofilm của <i>Listeria monocytogenes</i> dưới tác động của stress thẩm thấu do NaCl trong môi trường chế biến thịt · Ngày làm: 02/11/2026</p>
+    Bài tổng quan: Cơ chế hình thành màng biofilm của <i>Listeria monocytogenes</i> dưới tác động của stress thẩm thấu do NaCl trong môi trường chế biến thịt · Ngày làm: 02/11/2026 · Cập nhật câu hỏi: 08/11/2026</p>
   </div>
 </footer>
 
@@ -607,45 +611,146 @@
   var ASK_DATA = {
     g1: {
       title: 'Nhóm 1',
-      topic: 'Chủ đề: Surfactin · 2 câu hỏi từ Nhóm 9',
+      topic: 'Chủ đề: Surfactin từ Bacillus subtilis · bảo quản mì tươi · 2 câu hỏi từ Nhóm 9',
       questions: [
-        { text: 'Nếu sử dụng surfactin để bảo quản [từ khó đọc] trong thực tế, nhóm lựa chọn [nồng độ? — từ khó đọc] sử dụng như thế nào để kéo dài thời gian bảo quản vừa bảo đảm chất lượng cảm quan và an toàn cho người tiêu dùng?',
-          note: 'Chỗ [?] trong câu này: cụm sau “bảo quản” và cụm trước “sử dụng” trong ảnh viết tay khó đọc; bản trích tạm ghi theo nghĩa câu hỏi về nồng độ sử dụng.' },
-        { text: 'Nếu surfactin không tiêu diệt hoàn toàn vi sinh vật gây hư hỏng mà chỉ làm chậm sự phát triển của chúng, liệu có đủ để kéo dài thời gian bảo quản mà [câu bị cắt ở cuối ảnh]?',
-          note: 'Ảnh cắt ở chữ “mà” cuối câu — phần tiếp theo (nếu có) không đọc được.' }
+        {
+          context: 'Việc dùng dịch lên men thô chứa surfactin 360 g/kg bột, thay toàn bộ nước, giữ mì được 17 ngày ở 15°C (slide 19, 23).',
+          issue: 'Dịch thô mang theo cả môi trường nuôi cấy và tạp chất; chính bài cũng nêu quá liều gây vị đắng, giảm hút nước và tăng tổn thất chất khô khi nấu (slide 24).',
+          text: 'Với liều 360 g/kg dịch thô, kiểm soát cảm quan và chất lượng khi nấu ra sao, và mức tinh sạch tối thiểu nào mới dùng được cho sản xuất thật?',
+          goal: 'Nêu liều và mức tinh sạch cụ thể, cùng chỉ tiêu cảm quan, hút nước và tổn thất khi nấu phải đạt.'
+        },
+        {
+          context: 'Kết quả 17 ngày đo ở 15°C, trong khi mì tươi ngoài thị trường chỉ giữ được 1–2 ngày ở nhiệt độ phòng và 3–5 ngày ở 4°C (slide 4, 23).',
+          issue: '15°C không phải điều kiện bán lẻ thực tế ở Việt Nam, mà surfactin chỉ làm chậm vi sinh chứ không diệt hết.',
+          text: 'Nếu bán ở 25–30°C hoặc 4°C, thời hạn thực tế còn bao nhiêu ngày, và phối hợp surfactin với rào cản nào (lạnh, MAP, đóng gói vô trùng) để giữ được hiệu quả đó?',
+          goal: 'Nêu thời hạn theo từng nhiệt độ và rào cản đi kèm, có số liệu.'
+        }
+      ]
+    },
+    g2: {
+      title: 'Nhóm 2',
+      topic: 'Chủ đề: Lipopeptide từ Bacillus subtilis · kháng nấm mốc · 2 câu hỏi từ Nhóm 9',
+      questions: [
+        {
+          context: 'Ngũ cốc bảo quản 3–6 tháng; nhóm nêu giảm tới 85–95% aflatoxin tích tụ, với hai cơ chế: ức chế sinh tổng hợp (gen aflR, pksA) và phân hủy aflatoxin B1 thành chất không độc (slide 23).',
+          issue: 'Ức chế tổng hợp không làm giảm độc tố đã có sẵn trong lô hàng trước khi xử lý, nhưng con số 85–95% không tách hai cơ chế này ra.',
+          text: 'Lô ngũ cốc đã nhiễm aflatoxin B1 trước khi xử lý thì hàm lượng AFB1 đo được có giảm không, bằng cơ chế nào, và phải xử lý ở thời điểm nào mới đạt 85–95%?',
+          goal: 'Tách hai cơ chế bằng chỉ tiêu đo, và nêu thời điểm áp dụng đúng.'
+        },
+        {
+          context: 'Iturin tạo lỗ màng, fengycin chặn kéo dài sợi nấm, còn surfactin chỉ hỗ trợ bám dính và hiệp đồng (slide 20); liều cao làm đổi mùi vị, không phải chủng nào cũng GRAS, còn rào cản pháp lý (slide 25–26).',
+          issue: 'Surfactin không phải chất kháng nấm chính nhưng lại là thành phần gây vị đắng và nhũ hóa, nên càng thêm càng khó giữ cảm quan.',
+          text: 'Trong chế phẩm kháng nấm, dùng tỉ lệ iturin : fengycin : surfactin bao nhiêu, và làm sao giữ hiệu quả kháng nấm mà không đổi mùi vị hay vượt giới hạn pháp lý?',
+          goal: 'Nêu tỉ lệ và liều cụ thể cho một sản phẩm (bánh mì hoặc trái cây), cùng chỉ tiêu cảm quan và an toàn phải đạt.'
+        }
       ]
     },
     g3: {
       title: 'Nhóm 3',
       topic: 'Chủ đề: Axit acetic · L. paracasei HD1.7 · 2 câu hỏi từ Nhóm 9',
       questions: [
-        { text: 'Tại sao nhóm nghiên cứu lựa chọn 3 mức nồng độ axit acetic 2, 6 và 10 g/L để khảo sát sự thay đổi biểu hiện gen của vi khuẩn L. paracasei HD1.7?' },
-        { text: 'Kết quả cho thấy số lượng gen biểu hiện khác biệt (DEGs) tăng từ 36 gen ở 2 g/L lên 286 gen ở 10 g/L cho thấy điều gì về khả năng thích nghi của vi khuẩn khi chịu stress axit?' }
+        {
+          context: 'Slide 14 nêu số gen biểu hiện khác biệt (DEGs) tăng từ 36 gen ở 2 g/L lên 286 gen ở 10 g/L axit acetic; nhưng biểu đồ slide 18 cho 0,5% là 623 gen tăng + 412 gen giảm, 1% là 1.243 + 987, 2% là 2.087 + 1.698.',
+          issue: 'Hai bộ số lệch nhau cả chục lần, đơn vị cũng khác nhau (g/L so với %), nên không biết bộ nào mới là số liệu của chủng HD1.7.',
+          text: 'Bộ số nào mới đúng, nồng độ axit acetic trong thí nghiệm thực tế là bao nhiêu, và nếu dùng stress axit để tăng Paracin 1.7 thì nhóm chọn nồng độ nào?',
+          goal: 'Chốt một bộ số và một nồng độ áp dụng, giải thích sự lệch nhau, không giữ cả hai.'
+        },
+        {
+          context: 'Stress axit làm sinh trưởng giảm (OD600, glucose) nhưng bacteriocin tăng tới 133,92%, đạt cực đại sớm hơn (24 giờ); bơm H+-ATPase và duy trì pH nội bào 7,0–7,5 tốn ATP (slide 15–16, 19).',
+          issue: 'Tế bào tốn năng lượng để sống sót thì còn bao nhiêu năng lượng để sinh bacteriocin, nên tăng trên mỗi tế bào chưa chắc đã tăng trên mỗi lít dịch.',
+          text: 'Nếu thêm axit acetic vào lên men để tăng Paracin 1.7, nhóm tính hiệu suất theo lượng bacteriocin trên một lít dịch ra sao, và liều và thời điểm thêm axit nào cho tổng sản lượng cao nhất?',
+          goal: 'Nêu liều, thời điểm và chỉ tiêu sản lượng tính trên lít dịch.'
+        }
+      ]
+    },
+    g4: {
+      title: 'Nhóm 4',
+      topic: 'Chủ đề: Natamycin từ Streptomyces natalensis · 2 câu hỏi từ Nhóm 9',
+      questions: [
+        {
+          context: 'Natamycin tan rất ít trong nước (~40 µg/mL), nhạy sáng (UV 99 phút, ánh sáng huỳnh quang 10 ngày thì bất hoạt) và bất hoạt ở 121°C (slide 6, 17).',
+          issue: 'Các ứng dụng nêu ra đều là xử lý bề mặt phô mai, xúc xích, bánh (slide 18–19) — nơi sản phẩm phơi sáng và qua nhiệt.',
+          text: 'Nhóm sẽ đưa natamycin lên bề mặt bằng cách nào để phân tán đều, không bị ánh sáng phá hủy trước khi phát huy tác dụng, mà vẫn trong giới hạn EFSA 1 mg/dm² và FDA 20 mg/kg?',
+          goal: 'Nêu dạng chế phẩm và cách phun/nhúng, biện pháp chống sáng, và cách kiểm tra dư lượng.'
+        },
+        {
+          context: '300 ppm natamycin chỉ giảm 44,8% nhiễm Aspergillus niger trên thịt bò xay sau 8 ngày, trong khi trên phô mai 20 ppm đã kéo dài thêm 4 tuần (slide 17); ức chế nấm mọc không đồng nghĩa loại bỏ độc tố nấm mốc (slide 23).',
+          issue: 'Hiệu quả trên thịt thấp hơn hẳn trên phô mai, và natamycin không xử lý được độc tố đã có.',
+          text: 'Với thịt bò xay đã nhiễm nấm và có thể đã có aflatoxin/ochratoxin A, natamycin còn tác dụng gì, và cần phối hợp với biện pháp nào để kiểm soát cả nấm lẫn độc tố đã có?',
+          goal: 'Nêu giới hạn trên nền thịt và phương án phối hợp cụ thể, có chỉ tiêu đo cả nấm và độc tố.'
+        }
+      ]
+    },
+    g5: {
+      title: 'Nhóm 5',
+      topic: 'Chủ đề: Vi khuẩn lactic sinh bacteriocin từ nem chua · 2 câu hỏi từ Nhóm 9',
+      questions: [
+        {
+          context: 'Slide 14 (chữ) nói chủng tuyển chọn ức chế mạnh L. monocytogenes; nhưng Bảng 3 ở slide 16 cho thấy với L. monocytogenes hầu hết các chủng đều “–” (không kháng; chỉ NT2.9 đạt 5 mm, vài chủng 1,5–2 mm), với Salmonella typhimurium tất cả đều “–”.',
+          issue: 'Bảng số liệu mâu thuẫn với kết luận bằng chữ, mà Salmonella và Listeria lại chính là mối nguy nêu ra từ đầu để chọn đề tài.',
+          text: 'Dựa trên Bảng 3, chủng KL-1 thực sự ức chế L. monocytogenes và Salmonella ở mức nào (vòng ức chế bao nhiêu mm), và nếu gần như không ức chế thì nhóm còn dùng KL-1 để kiểm soát hai mối nguy này trong nem chua bằng cách nào?',
+          goal: 'Nêu số liệu đúng theo bảng, thừa nhận giới hạn, và phương án thay thế hoặc phối hợp cụ thể.'
+        },
+        {
+          context: 'Quy trình sản xuất bacteriocin (slide 17–18) chỉ liệt kê các yếu tố ảnh hưởng — chủng, môi trường, pH, nhiệt độ, thời gian, thu hồi/bảo quản — mà không cho một thông số cụ thể nào.',
+          issue: 'Không có thông số thì không sản xuất được, dù các yếu tố đã liệt kê đầy đủ.',
+          text: 'Để sản xuất bacteriocin từ KL-1, nhóm sẽ dùng môi trường, pH, nhiệt độ, thời gian lên men và cách thu hồi nào, căn cứ vào số liệu nào trong bài?',
+          goal: 'Nêu một bộ thông số hoàn chỉnh có thể làm theo được, thay vì chỉ liệt kê yếu tố.'
+        }
       ]
     },
     g6: {
       title: 'Nhóm 6',
-      topic: 'Chủ đề: Nisin · 2 câu hỏi từ Nhóm 9',
+      topic: 'Chủ đề: Nisin · kiểm soát vi sinh vật gây hư hỏng thực phẩm · 2 câu hỏi từ Nhóm 9',
       questions: [
-        { text: 'Tại sao khi sử dụng Nisin trong sản phẩm sữa, protein casein lại có thể làm giảm hoạt tính kháng khuẩn của Nisin?' },
-        { text: 'Nisin có thể tiêu diệt hoàn toàn bào tử vi khuẩn hay chỉ ức chế quá trình nảy mầm? Giải thích?' }
+        {
+          context: 'Nisin tan và bền tốt ở pH axit, giảm ở pH trung tính; bị protease cắt, bị casein và chất béo gắn kết làm hao hụt (slide 16, 22).',
+          issue: 'Các ứng dụng nêu ra lại là sữa, phô mai, thịt — nền pH gần trung tính, giàu casein/chất béo và có protease.',
+          text: 'Trong sữa/phô mai/thịt, lượng nisin tự do còn lại thực tế là bao nhiêu, và nhóm sẽ chọn liều bao nhiêu (trong khoảng 100–4.000 IU/mL ở slide 20) cùng biện pháp bảo vệ nào (vi bao, phối hợp EDTA, nhiệt nhẹ) để vẫn đủ hiệu quả mà không vượt Thông tư 24/2019?',
+          goal: 'Nêu liều cho một sản phẩm cụ thể, cách đo nisin tự do còn lại, và giới hạn pháp lý áp dụng.'
+        },
+        {
+          context: 'Vi khuẩn kháng nisin bằng protein NisI, bơm NisFEG, protease NSR cắt đầu C và hệ TCS+ABC (S. aureus, C. difficile, S. mutans); dùng kéo dài tạo áp lực chọn lọc (slide 18–19, 24).',
+          issue: 'Dùng nisin thường xuyên trong cùng một nhà máy hay sản phẩm sẽ chọn ra chủng chịu nisin, làm mất dần hiệu quả.',
+          text: 'Nếu áp dụng nisin lâu dài, nhóm sẽ theo dõi và ngăn chủng kháng nisin xuất hiện bằng cách nào — luân phiên, phối hợp rào cản nào, và chỉ tiêu nào báo hiệu phải đổi phương án?',
+          goal: 'Nêu biện pháp giám sát và phương án dự phòng cụ thể, không chỉ nói “kết hợp thêm”.'
+        }
       ]
     },
     g7: {
       title: 'Nhóm 7',
-      topic: 'Chủ đề: Endolysin · 2 câu hỏi từ Nhóm 9',
+      topic: 'Chủ đề: Endolysin từ bacteriophage · kiểm soát Listeria trên thủy sản · 2 câu hỏi từ Nhóm 9',
       questions: [
-        { text: 'Tại sao Endolysin có khả năng tiêu diệt Listeria monocytogenes mà ít ảnh hưởng đến các vi sinh vật có lợi khác?' },
-        { text: 'Endolysin tác động lên thành tế bào như thế nào? Vai trò của hai miền CBD và EAD là gì?' }
+        {
+          context: 'PlyP825 kết hợp áp suất cao (HHP) 500 MPa/10 phút chỉ giảm ~1,6 log CFU/g L. monocytogenes trên cá hồi xông khói; 300 MPa chưa hiệu quả (slide 18, 21).',
+          issue: 'Cá hồi xông khói ăn liền yêu cầu kiểm soát Listeria rất chặt, 1,6 log không phải là loại bỏ.',
+          text: 'Với mức giảm này, có coi PlyP825 + HHP là đủ an toàn cho cá hồi xông khói không, và nếu chưa đủ thì tăng liều endolysin, tăng áp suất, hay phối hợp thêm gì — với giới hạn nào về cảm quan và chi phí?',
+          goal: 'Nêu mức giảm log cần đạt, phương án đạt được nó, và cái giá phải trả.'
+        },
+        {
+          context: 'Bảng so sánh slide 20: bổ sung trực tiếp thì dữ liệu trên thủy sản còn hạn chế, hiệu quả phụ thuộc pH/muối/thành phần; endolysin + HHP có cơ sở thực nghiệm nhưng hiệp đồng không tương tự trên cá hồi xông khói; màng/bao bì hoạt tính thì chưa đủ bằng chứng để xem là kỹ thuật phổ biến.',
+          issue: 'Cả ba kỹ thuật đều chưa chắc chắn cho đúng sản phẩm cá hồi xông khói, nên cần chọn một kỹ thuật và chứng minh trên chính sản phẩm đó.',
+          text: 'Cho cá hồi xông khói, nhóm sẽ chọn kỹ thuật nào trong ba kỹ thuật trên, vì sao chọn nó mà không chọn hai kỹ thuật còn lại, và sẽ kiểm chứng bằng thí nghiệm nào trên chính cá hồi xông khói?',
+          goal: 'Nêu một lựa chọn duy nhất có lý do, kèm thiết kế kiểm chứng trên đúng sản phẩm.'
+        }
       ]
     },
-    gx: {
-      title: 'Nhóm nhận chưa xác định',
-      topic: 'Chủ đề: Natamycin · 2 câu hỏi từ Nhóm 9',
+    g8: {
+      title: 'Nhóm 8',
+      topic: 'Chủ đề: Bacteriophage kiểm soát Salmonella trong thịt gà · 2 câu hỏi từ Nhóm 9',
       questions: [
-        { text: 'Trong quy trình sản xuất natamycin sử dụng chủng Streptomyces natalensis NRRL 2651, hãy cho biết thời gian lên men tổng cộng bao nhiêu giờ và pH ban đầu được điều chỉnh ở mức nào?' },
-        { text: '[Từ đầu câu khó đọc] lên men fed-batch, chia quá trình thành mấy giai đoạn chính, mức cấp glucose ở giờ thứ 50 (giai đoạn II) là gì?',
-          note: 'Góc ảnh ghi “10 04” — chưa đủ căn cứ để khẳng định nhóm nhận là Nhóm 4 hay Nhóm 10, nên để là chưa xác định. Đầu câu 2 và cụm về cấp glucose trong ảnh khó đọc.' }
+        {
+          context: 'Bảng slide 16 (Atterbury và cộng sự, 2020): phun phage lên da gà, S. Enteritidis dương tính giảm từ 100% (18/18) xuống 27,8% (5/18), MPN 1,38 → 0,00; nhưng S. Typhimurium chỉ giảm xuống 61,1% (11/18), MPN 2,43 → 0,60.',
+          issue: 'Cùng một chế phẩm, hiệu quả chênh lệch lớn theo huyết thanh, trong khi thịt gà ngoài thực tế mang cả hai.',
+          text: 'Vì sao phage hiệu quả với Enteritidis hơn hẳn Typhimurium, và khi thịt gà mang cả hai (thậm chí nhiều huyết thanh khác), việc thiết kế cocktail và liều dùng ra sao để bao phủ được Typhimurium?',
+          goal: 'Nêu cơ chế khác biệt (thụ thể/phổ vật chủ) và thành phần cocktail cụ thể cho cả hai huyết thanh.'
+        },
+        {
+          context: 'Hình slide 17: nhúng thịt gà ở 4°C chỉ giảm ~0,7–0,9 log sau 1 ngày; cocktail ở 22°C giảm rõ, nhưng ở 30°C (hình b) hiệu quả gần như mất — đến 72 giờ, xử lý phage còn cao hơn đối chứng (~8,7 so với ~8,0 log CFU/g).',
+          issue: 'Phage cần vi khuẩn sinh trưởng để nhân lên, nhưng thịt gà bảo quản lạnh thì vi khuẩn gần như không sinh trưởng, còn ở 30°C vi khuẩn mọc lại nhanh hơn phage diệt.',
+          text: 'Trong chuỗi lạnh 4°C — điều kiện bảo quản thịt gà thực tế — áp dụng phage ở công đoạn, liều (MOI) và thời gian tiếp xúc nào để đạt mức giảm có ý nghĩa, và nếu không đạt thì phage chỉ nên dùng ở công đoạn nào khác?',
+          goal: 'Nêu MOI, công đoạn và mức giảm log kỳ vọng ở 4°C, thay vì lấy số liệu ở 22–30°C áp cho chuỗi lạnh.'
+        }
       ]
     }
   };
@@ -655,6 +760,14 @@
   var askList = document.getElementById('askPanelList');
   var currentAsk = 'g1';
 
+  function askQuestionText(data, q, i){
+    var lines = ['Câu ' + (i+1) + ' — Nhóm 9 hỏi ' + data.title + ':'];
+    if(q.context) lines.push('Bối cảnh: ' + q.context);
+    if(q.issue) lines.push('Vấn đề chính: ' + q.issue);
+    lines.push('Câu hỏi: ' + q.text);
+    if(q.goal) lines.push('Mục tiêu cần trả lời: ' + q.goal);
+    return lines.join('\n');
+  }
   function renderAsk(key, announce){
     currentAsk = key;
     var data = ASK_DATA[key];
@@ -668,11 +781,38 @@
       var num = document.createElement('p');
       num.className = 'q-num';
       num.textContent = 'Câu ' + (i+1) + ' — Nhóm 9 hỏi ' + data.title;
+      box.appendChild(num);
+      if(q.context){
+        var ctx = document.createElement('p');
+        ctx.className = 'q-context';
+        var ctxB = document.createElement('b');
+        ctxB.textContent = 'Bối cảnh. ';
+        ctx.appendChild(ctxB);
+        ctx.appendChild(document.createTextNode(q.context));
+        box.appendChild(ctx);
+      }
+      if(q.issue){
+        var iss = document.createElement('p');
+        iss.className = 'q-issue';
+        var issB = document.createElement('b');
+        issB.textContent = 'Vấn đề chính. ';
+        iss.appendChild(issB);
+        iss.appendChild(document.createTextNode(q.issue));
+        box.appendChild(iss);
+      }
       var qt = document.createElement('p');
       qt.className = 'q';
-      qt.textContent = q.text;
-      box.appendChild(num);
+      qt.textContent = 'Câu hỏi: ' + q.text;
       box.appendChild(qt);
+      if(q.goal){
+        var goal = document.createElement('p');
+        goal.className = 'q-goal';
+        var goalB = document.createElement('b');
+        goalB.textContent = 'Mục tiêu cần trả lời: ';
+        goal.appendChild(goalB);
+        goal.appendChild(document.createTextNode(q.goal));
+        box.appendChild(goal);
+      }
       if(q.note){
         var note = document.createElement('p');
         note.className = 'q-note';
@@ -686,7 +826,7 @@
       btn.type = 'button';
       btn.textContent = 'Sao chép câu hỏi';
       btn.addEventListener('click', function(){
-        copyText('Nhóm 9 — Câu ' + (i+1) + ' cho ' + data.title + ':\n' + q.text, 'Đã sao chép câu ' + (i+1) + ' cho ' + data.title + '.');
+        copyText(askQuestionText(data, q, i), 'Đã sao chép câu ' + (i+1) + ' cho ' + data.title + '.');
       });
       acts.appendChild(btn);
       box.appendChild(acts);
@@ -699,8 +839,8 @@
   });
   document.getElementById('askCopyAll').addEventListener('click', function(){
     var data = ASK_DATA[currentAsk];
-    var lines = data.questions.map(function(q, i){ return 'Câu ' + (i+1) + ': ' + q.text; });
-    copyText('Câu hỏi Nhóm 9 đặt cho ' + data.title + ' (' + data.topic + ')\n\n' + lines.join('\n\n'), 'Đã sao chép tất cả câu hỏi cho ' + data.title + '.');
+    var blocks = data.questions.map(function(q, i){ return askQuestionText(data, q, i); });
+    copyText('Câu hỏi Nhóm 9 đặt cho ' + data.title + ' (' + data.topic + ')\n\n' + blocks.join('\n\n'), 'Đã sao chép tất cả câu hỏi cho ' + data.title + '.');
   });
   renderAsk('g1', false);
 
@@ -729,11 +869,14 @@
     { id:'8', name:'Nhóm 8', sub:'Đặt câu hỏi cho Nhóm 9', meta:'2 câu hỏi · 1 ngoài phạm vi' }
   ];
   var QUESTION_GROUPS = [
-    { key:'g1', name:'Nhóm 1', sub:'Surfactin', meta:'2 câu hỏi' },
+    { key:'g1', name:'Nhóm 1', sub:'Surfactin · mì tươi', meta:'2 câu hỏi' },
+    { key:'g2', name:'Nhóm 2', sub:'Lipopeptide · kháng nấm mốc', meta:'2 câu hỏi' },
     { key:'g3', name:'Nhóm 3', sub:'Axit acetic · L. paracasei HD1.7', meta:'2 câu hỏi' },
+    { key:'g4', name:'Nhóm 4', sub:'Natamycin · Streptomyces natalensis', meta:'2 câu hỏi' },
+    { key:'g5', name:'Nhóm 5', sub:'Bacteriocin · nem chua', meta:'2 câu hỏi' },
     { key:'g6', name:'Nhóm 6', sub:'Nisin', meta:'2 câu hỏi' },
-    { key:'g7', name:'Nhóm 7', sub:'Endolysin', meta:'2 câu hỏi' },
-    { key:'gx', name:'Chưa xác định', sub:'Natamycin', meta:'2 câu hỏi' }
+    { key:'g7', name:'Nhóm 7', sub:'Endolysin · thủy sản', meta:'2 câu hỏi' },
+    { key:'g8', name:'Nhóm 8', sub:'Bacteriophage · Salmonella trên thịt gà', meta:'2 câu hỏi' }
   ];
 
   function showView(v){
